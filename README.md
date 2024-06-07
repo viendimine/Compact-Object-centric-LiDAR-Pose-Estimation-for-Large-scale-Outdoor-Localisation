@@ -150,8 +150,14 @@ Now, even if some objects in the environment change (like different cars parked 
 ### 1. Semantic Segmentation:-
 First, we start with a point cloud, which is a collection of 3D points representing the environment. Each point in the point cloud is assigned a semantic label using a pre-trained network. These labels classify the points into different categories, such as buildings, trees, or cars.
 
+![Semantic_Segmentation](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/e05dc824-c4b7-4111-afd9-01c5885bef32)
+
+
 ### 2.CLustering into Objects:-
 Using the Density-Based Spatial Clustering of Applications with Noise (DBSCAN) algorithm, we group the points into clusters based on their labels and their spatial coordinates. Each cluster represents an object in the environment, like a specific tree or a particular building corner.
+
+![Clustering](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/23dd407e-5e50-45bf-ad32-af1dca25dcf6)
+
 
 ### 3.Extracting Key Information:-
 For each cluster, we calculate its centroid (the average position of all the points in the cluster) and keep its semantic label. This gives us a set of labeled objects where each object is represented by its centroid and its semantic type.
