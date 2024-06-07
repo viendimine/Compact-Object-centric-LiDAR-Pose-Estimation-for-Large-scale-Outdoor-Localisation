@@ -146,6 +146,48 @@ Using the Kabsch algorithm, the robot calculates the best rotation and translati
 ### 4.Pose Estimation:-
 Now, even if some objects in the environment change (like different cars parked on the street), the robot can still accurately estimate its pose by relying on the stable, semantic key points like lamp posts and building corners.
 ​
+### To improve the process of estimating a robot's position using point clouds, we follow a method inspired by BoxGraph and SGPR. Here's a breakdown of how it works:
+### 1. Semantic Segmentation:-
+First, we start with a point cloud, which is a collection of 3D points representing the environment. Each point in the point cloud is assigned a semantic label using a pre-trained network. These labels classify the points into different categories, such as buildings, trees, or cars.
+
+### 2.CLustering into Objects:-
+Using the Density-Based Spatial Clustering of Applications with Noise (DBSCAN) algorithm, we group the points into clusters based on their labels and their spatial coordinates. Each cluster represents an object in the environment, like a specific tree or a particular building corner.
+
+### 3.Extracting Key Information:-
+For each cluster, we calculate its centroid (the average position of all the points in the cluster) and keep its semantic label. This gives us a set of labeled objects where each object is represented by its centroid and its semantic type.
+### 4.Creating a Labeled object set:-
+
+
+The result of this process is a labeled object set O={(o 
+i
+​
+ ,l 
+i
+​
+ )∣o 
+i
+​
+ ∈R 
+3
+ ,l 
+i
+​
+ ∈L}. Here, 
+𝑜
+𝑖
+o 
+i
+​
+  represents the centroid of an object, and 
+𝑙
+𝑖
+l 
+i
+​
+  is its semantic label. This labeled object set is used as the key points for further processing.
+
+### 5.Simplified Approach:-
+Unlike more complex methods that analyze the geometric structure within and between objects in the point cloud, our approach uses only the semantic labels and the spatial relationships between the objects. We then learn any additional representations needed for these objects.
  .
  
 ### Here's a step-by-step explanation of the approach:
