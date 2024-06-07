@@ -55,6 +55,99 @@ This method selects points that have a high degree of "saliency" or distinctiven
 
 Despite this extreme compression, the proposed approach can still achieve accurate metric localization and pose estimation by leveraging the learning-based object matching technique and robust pose estimation algorithms like weighted SVD or RANSAC. The key advantage of this approach is that it enables scalable mapping and localization for autonomous systems with limited storage and computational resources, while maintaining reasonable accuracy.
 
+## Problem Setup:-
+Step by Step Explanation:-
+
+### 1.Object Extraction
+The robot collects a point cloud, P 
+s
+​
+ ={p 
+i
+​
+ ∣p 
+i
+​
+ ∈R 
+3
+ },which is a set of 3D points representing the environment from the robot's live sensor stream. The pre-built map of the city is another point cloud,P 
+m
+​
+ ={p 
+j
+​
+ ∣p 
+j
+​
+ ∈R 
+3
+ }.
+
+ ### 2. Goal: Estimating Transformation
+
+ The Objective is to estimate the relative transformation T 
+s,m
+​
+ =[R 
+s,m
+​
+ ∣t 
+s,m
+​
+ ],where 
+𝑅
+𝑠
+,
+𝑚
+∈
+𝑆
+𝑂
+(
+3
+)
+R 
+s,m
+​
+ ∈SO(3) represents the rotation and 
+𝑡
+𝑠
+,
+𝑚
+∈
+𝑅
+3
+t 
+s,m
+​
+ ∈R 
+3
+  represents the translation. This transformation aligns the live point cloud 
+𝑃
+𝑠
+P 
+s
+​
+  with the map 
+𝑃
+𝑚
+P 
+m
+
+
+
+## Example Scenario
+Let's say the robot is navigating through a street and its live sensor stream detects several objects: lamp posts, trees, and buildings. The pre-built map also contains these objects.
+### 1.Extract Key Points:-
+From the live sensor stream, the robot identifies key points such as the tops of lamp posts, the corners of buildings, and specific trees. It does the same for the pre-built map.
+### 2.Find Correspondences:-
+The robot matches these key points between the live data and the map. For instance, it identifies that a specific lamp post in the live data corresponds to the same lamp post in the map.
+### 3.Calculate Transformation:-
+Using the Kabsch algorithm, the robot calculates the best rotation and translation that align these matched key points. This gives the robot its pose relative to the map.
+### 4.Pose Estimation:-
+Now, even if some objects in the environment change (like different cars parked on the street), the robot can still accurately estimate its pose by relying on the stable, semantic key points like lamp posts and building corners.
+​
+ .
+ 
 ### Here's a step-by-step explanation of the approach:
 
 ### 1.Object Extraction:-
