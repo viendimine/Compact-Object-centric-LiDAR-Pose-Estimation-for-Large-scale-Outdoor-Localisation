@@ -22,6 +22,9 @@ of the objects’ centroids and their class – i.e. three floating-
 points and one byte – is enough for the task, requiring on
 average 1.33 kB of storage per LiDAR scan against 1.41 MB
 of raw data.
+## Point Cloud?
+[![Video Title](https://img.youtube.com/vi/2crAfWZOgf0/0.jpg)](https://www.youtube.com/watch?v=2crAfWZOgf0)
+
 
 ## What is Point Cloud Registration?
 Point cloud registration is the process of aligning or overlaying two or more 3D point cloud data sets captured from different positions or viewpoints into a common coordinate system.
