@@ -36,7 +36,21 @@ Now, you have two separate point clouds, each showing a part of the room from a 
 
 Point cloud registration algorithms try to find common features or overlapping areas between the two point clouds and use them to align the point clouds correctly. It's like finding common objects or structures (like a table or a window) visible in both point clouds and using them as reference points to match and overlay the point clouds perfectly.
 
+## 1.Iterative Closest Point
+One of the most widely used and simple methods for point cloud registration is called Iterative Closest Point (ICP). ICP uses the 3D coordinates (x, y, z) of each point in the two scans to try to match points between the scans. It starts with an initial guess of the displacement and then iteratively refines it by finding the closest points between the two scans and minimizing the distances between them.
 
+![ICP_algorithm](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/56effbf1-b0fe-4d43-a6eb-cb7c90214c0c)
+
+However, ICP and other point-to-point matching methods can struggle when the environment changes significantly between the two scans, either due to different viewpoints or changes over time (e.g., objects moving or being added/removed).
+
+To address this, researchers have developed methods that rely on detecting and matching specific keypoints or features in the environment, rather than trying to match every point. These keypoints are selected because they are distinctive and likely to be visible and recognizable from different viewpoints or over time.
+Some classical (hand-designed) methods for detecting keypoints in 3D point clouds include:
+
+#### (A).Intrinsic Shape Signature:-
+This method looks for points that have a large variation in the shape of their local neighborhood, making them distinctive and easy to recognize from different viewpoints.
+
+#### (B).Keypoint Generator:-
+This method selects points that have a high degree of "saliency" or distinctiveness based on their local neighborhood, making them stand out as potential keypoints.
 
 
 Despite this extreme compression, the proposed approach can still achieve accurate metric localization and pose estimation by leveraging the learning-based object matching technique and robust pose estimation algorithms like weighted SVD or RANSAC. The key advantage of this approach is that it enables scalable mapping and localization for autonomous systems with limited storage and computational resources, while maintaining reasonable accuracy.
