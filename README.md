@@ -14,7 +14,8 @@ Additionally, as the maps become more detailed and cover larger areas, the stora
 ## Solution Approcah:-
 The proposed approach in this work aims to represent LiDAR scans in an extremely compact form while still enabling accurate localization and pose estimation. The key idea is to represent each LiDAR scan as a small set of 3D centroids and semantic labels corresponding to individual object instances detected in the scene.
 
-![image](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/03be8f38-40ab-4ec6-8867-bdac41f029f4)
+
+![Lidar_compressed_scans](https://github.com/vishapraj/Compact-Object-centric-LiDAR-Pose-Estimation-for-Large-scale-Outdoor-Localisation/assets/126682925/2a8aebf2-cf8c-4981-8d73-0d80f52a6728)
 
 
 Here, we show that a descriptor composed of the positions
@@ -28,8 +29,8 @@ of raw data.
 
 ## What is Point Cloud Registration?
 Point cloud registration is the process of aligning or overlaying two or more 3D point cloud data sets captured from different positions or viewpoints into a common coordinate system.
+![point_cloud_registration](https://github.com/vishapraj/Compact-Object-centric-LiDAR-Pose-Estimation-for-Large-scale-Outdoor-Localisation/assets/126682925/864c5b6b-da56-4ef8-ba3f-67ff166ba555)
 
-![point_cloud_registration](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/5cc797bd-5ef1-4a3e-bba0-0d89e93e7fbd)
 
 Imagine you have a room, and you want to create a 3D model of it using a laser scanner (like a LiDAR sensor). You scan the room from one corner, capturing a point cloud representing that part of the room. Then, you move to another corner and scan again, capturing a different point cloud from another viewpoint.
 Now, you have two separate point clouds, each showing a part of the room from a different angle or position. To create a complete 3D model of the entire room, you need to align or "register" these two point clouds together accurately.
@@ -38,8 +39,9 @@ Point cloud registration algorithms try to find common features or overlapping a
 
 ## 1.Iterative Closest Point
 One of the most widely used and simple methods for point cloud registration is called Iterative Closest Point (ICP). ICP uses the 3D coordinates (x, y, z) of each point in the two scans to try to match points between the scans. It starts with an initial guess of the displacement and then iteratively refines it by finding the closest points between the two scans and minimizing the distances between them.
+![ICP_algorithm](https://github.com/vishapraj/Compact-Object-centric-LiDAR-Pose-Estimation-for-Large-scale-Outdoor-Localisation/assets/126682925/8454b54a-d581-41e4-aad1-15479b22653d)
 
-![ICP_algorithm](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/56effbf1-b0fe-4d43-a6eb-cb7c90214c0c)
+
 
 However, ICP and other point-to-point matching methods can struggle when the environment changes significantly between the two scans, either due to different viewpoints or changes over time (e.g., objects moving or being added/removed).
 
@@ -150,13 +152,14 @@ Now, even if some objects in the environment change (like different cars parked 
 ### 1. Semantic Segmentation:-
 First, we start with a point cloud, which is a collection of 3D points representing the environment. Each point in the point cloud is assigned a semantic label using a pre-trained network. These labels classify the points into different categories, such as buildings, trees, or cars.
 
-![Semantic_Segmentation](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/e05dc824-c4b7-4111-afd9-01c5885bef32)
+![Semantic_Segmentation](https://github.com/vishapraj/Compact-Object-centric-LiDAR-Pose-Estimation-for-Large-scale-Outdoor-Localisation/assets/126682925/06f16b06-61ae-4c2f-808e-fb678e3b0d5e)
+
 
 
 ### 2.CLustering into Objects:-
 Using the Density-Based Spatial Clustering of Applications with Noise (DBSCAN) algorithm, we group the points into clusters based on their labels and their spatial coordinates. Each cluster represents an object in the environment, like a specific tree or a particular building corner.
 
-![Clustering](https://github.com/vishapraj/Robot-Operating-System-ROS-/assets/126682925/23dd407e-5e50-45bf-ad32-af1dca25dcf6)
+![Clustering](https://github.com/vishapraj/Compact-Object-centric-LiDAR-Pose-Estimation-for-Large-scale-Outdoor-Localisation/assets/126682925/ece4b4c1-7504-41b1-b2e3-a38c6126d663)
 
 
 ### 3.Extracting Key Information:-
