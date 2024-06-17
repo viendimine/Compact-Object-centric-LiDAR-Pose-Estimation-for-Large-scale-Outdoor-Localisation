@@ -199,9 +199,4 @@ i
 Unlike more complex methods that analyze the geometric structure within and between objects in the point cloud, our approach uses only the semantic labels and the spatial relationships between the objects. We then learn any additional representations needed for these objects.
  .
  
-### Here's a step-by-step explanation of the approach:
-
-### 1.Object Extraction:-
-The Object Extraction step is a crucial component of the proposed approach, as it transforms the raw, dense LiDAR point cloud data into a compact and structured representation of individual object instances. This step involves two main substeps: semantic segmentation and instance clustering.
-
 
